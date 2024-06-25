@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
                 'password'=> Hash::make('123'),
                 'email' => 'admin@admin.com',
+                'mbl_no' => '01867118351',
                 'email_verified_at' => now(),
         ]);
         $admin->assignRole('admin');
