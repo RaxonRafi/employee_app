@@ -1,0 +1,157 @@
+.bg-img{
+    background-image: url('/assets/images/img-12.jpg');
+    background-size: cover;
+    top: 0;
+    bottom: 0;
+    opacity: 1;
+    z-index: 999;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+.bg-img:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(36 10 99 / 52%);
+}
+.info{
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 999;
+    text-align: left;
+}
+.info h1 {
+    font-size: 60px;
+    color: #18ffc1dd;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-family: 'jost';
+}
+
+.info p {
+    margin-bottom: 0;
+    color: #fff;
+    opacity: 0.9;
+    line-height: 28px;
+}
+
+.form-section {
+    max-width: 430px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top:40px
+}
+.form-section a{
+    text-decoration: none;
+}
+.login-form .form-group {
+    margin-bottom: 25px;
+}
+.login-form .form-box {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.login-form .form-control {
+    font-size: 16px;
+    outline: none;
+    color: #535353;
+    border-radius: 3px;
+    font-weight: 500;
+    border: 1px solid #dcdcdc;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+}
+.login-form img {
+    margin-bottom: 5px;
+    height: 40px;
+}
+.login-form .form-box .form-control {
+    float: left;
+    width: 100%;
+    padding: 12px 45px 12px 20px;
+    border-radius: 50px;
+}
+.login-form .form-box i {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 18px;
+    color: #535353;
+}
+.login-form .forgot-password {
+    margin: 0;
+    color: #535353;
+    font-size: 16px;
+    float: right;
+    text-decoration: none;
+}
+
+.login--form p {
+    margin: 0;
+    color: #535353;
+}
+
+.login-form p a {
+    color: #535353;
+}
+
+.login-form button:focus {
+    outline: none;
+    outline: 0 auto -webkit-focus-ring-color;
+}
+
+.login-form .btn-theme.focus, .btn-theme:focus {
+    box-shadow: none;
+}
+ .logo img {
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+.form-section h3 {
+    font-size: 23px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    color: #040404;
+}
+.form-check-input:checked {
+    background-color: #ff0000;
+    border: 1px solid #ff0000;
+}
+.btn-primary{
+    background: #ff0000;
+}
+.btn-theme {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    outline: none;
+    color: #fff;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Jost', sans-serif;
+    border-radius: 50px;
+    border: none;
+    margin-top: 20px;
+}
+
+.btn-lg{
+    padding: 0 50px;
+    line-height: 50px;
+}
+
