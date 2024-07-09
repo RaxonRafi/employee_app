@@ -12,7 +12,7 @@ Route::get('/',[HomeController::class,'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 Route::resource('permission',PermissionController::class);
 Route::get('permission/{id}/delete',[PermissionController::class,'destroy']);
 Route::resource('role',RoleController::class);

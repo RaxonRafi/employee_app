@@ -13,9 +13,13 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id('emp_id');
+            $table->unsignedBigInteger('emp_designation_id');
             $table->foreignId('emp_dep_id')
             ->references('dept_id')
             ->on('departments');
+            $table->foreign('emp_designation_id')
+            ->references('designation_id')
+            ->on('designations');
             $table->string('emp_name');
             $table->string('emp_mbl');
             $table->string('emp_email')->unique();

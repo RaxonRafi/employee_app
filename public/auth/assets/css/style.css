@@ -1,5 +1,5 @@
 .bg-img{
-    background-image: url('/assets/images/img-12.jpg');
+    background-image: url('../images/img-12.jpg');
     background-size: cover;
     top: 0;
     bottom: 0;

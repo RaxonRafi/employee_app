@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>cms dashboard
+        <title>Employee Management System
 		</title>
 	    <!-- Bootstrap CSS -->
         {{-- <link rel="stylesheet" href="css/bootstrap.min.css"> --}}
@@ -100,6 +99,16 @@
 
                 <li class="dropdown">
                     <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+					<i class="material-icons">apps</i><span>Department</span></a>
+
+                </li>
+                <li class="dropdown">
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+					<i class="material-icons">apps</i><span>Designation</span></a>
+
+                </li>
+                <li class="dropdown">
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
 					<i class="material-icons">apps</i><span>Employees</span></a>
 
                 </li>
@@ -140,6 +149,16 @@
                         </li>
 
                     </ul>
+                </li>
+				<li class="dropdown">
+                    <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+					<i class="material-icons">border_color</i><span>Logout</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
                 </li>
             </ul>
         </nav>
