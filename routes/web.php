@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -21,3 +22,8 @@ Route::get('role/{id}/delete',[RoleController::class,'destroy']);
 Route::get('role/{id}/give-permission',[RoleController::class,'addPermissionToRole']);
 Route::put('role/{id}/give-permission',[RoleController::class,'givePermissionToRole']);
 Route::resource('users',UserController::class);
+
+Route::controller(EmployeesController::class)->group(function(){
+    Route::get('/employees/index','index')->name('employee.index');
+    Route::get('/employees/create','create')->name('employee.create');
+});
