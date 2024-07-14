@@ -43,7 +43,7 @@
                 <h3><img src="{{asset('admin/img/logo.png')}}" class="img-fluid"/><span>Employee App</span></h3>
             </div>
             <ul class="list-unstyled components">
-			<li  class="active">
+			<li class="{{request()->routeIs('dashboard') ? 'active':''}} ">
                     <a href="{{route('dashboard')}}" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
                 </li>
 
@@ -97,17 +97,16 @@
                     </ul> -->
                 </li>
 
-                <li class="dropdown">
-                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <li class="{{request()->is('department*') ? 'active':''}} ">
+                    <a href="{{route('department.index')}}">
 					<i class="material-icons">apps</i><span>Department</span></a>
 
                 </li>
-                <li class="dropdown">
-                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <li class="{{request()->is('designation*') ? 'active':''}} ">
+                    <a href="{{route('designation.index')}}">
 					<i class="material-icons">apps</i><span>Designation</span></a>
-
                 </li>
-                <li class="dropdown">
+                <li class="{{request()->is('employee*') ? 'active':''}} ">
                     <a href="{{route('employee.index')}}">
                         <i class="material-icons">apps</i><span>Employees</span>
                     </a>

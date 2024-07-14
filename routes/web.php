@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PermissionController;
@@ -27,3 +29,16 @@ Route::controller(EmployeesController::class)->group(function(){
     Route::get('/employees/index','index')->name('employee.index');
     Route::get('/employees/create','create')->name('employee.create');
 });
+Route::controller(DesignationController::class)->group(function(){
+    Route::get('/designation/index','index')->name('designation.index');
+    Route::get('/designation/create','create')->name('designation.create');
+});
+Route::controller(DepartmentController::class)->group(function(){
+    Route::get('/department/index','index')->name('department.index');
+    Route::get('/department/create','create')->name('department.create');
+    Route::post('/department/add','add_department')->name('department.add');
+    Route::get('/department/{id}/edit','edit')->name('department.edit');
+    Route::put('/department/{id}','update')->name('department.update');
+    Route::get('/department/{id}','delete')->name('department.delete');
+});
+
