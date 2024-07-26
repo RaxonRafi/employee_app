@@ -32,6 +32,10 @@ Route::controller(EmployeesController::class)->group(function(){
 Route::controller(DesignationController::class)->group(function(){
     Route::get('/designation/index','index')->name('designation.index');
     Route::get('/designation/create','create')->name('designation.create');
+    Route::post('/designation/add','add_designation')->name('designation.add');
+    Route::get('/designation/{id}/edit','edit')->name('designation.edit');
+    Route::put('/designation/{id}','update')->name('designation.update');
+    Route::get('/designation/{id}','delete')->name('designation.delete');
 });
 Route::controller(DepartmentController::class)->group(function(){
     Route::get('/department/index','index')->name('department.index');

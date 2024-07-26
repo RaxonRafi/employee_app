@@ -8,30 +8,36 @@ Employees
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                  <h5 class="card-title">Add Employee</h5>
-                  <a href="#" class="btn btn-info">Employee List</a>
+                  <h5 class="card-title">Add Designation</h5>
+                  <a href="{{route('designation.index')}}" class="btn btn-info">Designation List</a>
                 </div>
+
                 <div class="card-body">
-                    <form>
+                    @if (session('success'))
+                        <div class="alert alert-info" role="alert">
+                            {{session('success')}}
+                        </div>
+                    @endif
+                    <form action="{{ route('designation.add') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
-                          <label class="form-label">Employee Name</label>
-                          <input type="text" class="form-control">
+                          <label class="form-label">Department Name</label>
+                          <select name="dept_id" class="form-control @error('dept_title') is-invalid @enderror">
+                            <option selected>Select Department</option>
+                            @foreach ($departments as $department)
+                                <option value="{{$department->dept_id}}">{{$department->dept_title}}</option>
+                            @endforeach
+                          </select>
+                          @error('dept_title')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
                         </div>
                         <div class="mb-3">
-                          <label class="form-label">Employee Email</label>
-                          <input type="email" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label">Mobile No.</label>
-                          <input type="phone" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label">Employee Department</label>
-                          <input type="text" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                          <label class="form-label">Employee Designation</label>
-                          <input type="text" class="form-control">
+                          <label class="form-label">Designation</label>
+                          <input name="designation" class="form-control @error('designation') is-invalid @enderror">{{ old('designation') }}>
+                          @error('designation')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                       </form>
