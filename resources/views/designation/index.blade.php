@@ -31,8 +31,8 @@ Designation
                                             <td>{{$designation->designation}}</td>
                                             <td>{{$designation->dept_title}}</td>
                                             <td class="d-flex">
-                                                <a href="{{route('department.edit',$designation->dept_id)}}" type="button" class="btn btn-outline-warning mr-3">Edit</a>
-                                                <a  href="{{route('department.delete',$designation->dept_id)}}" type="button" class="btn btn-outline-danger">Delete</a>
+                                                <a href="{{route('designation.edit',$designation->designation_id)}}" type="button" class="btn btn-outline-warning mr-3">Edit</a>
+                                                <a  href="{{route('designation.delete',$designation->designation_id)}}" onclick="return confirmDelete()"  type="button" class="btn btn-outline-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

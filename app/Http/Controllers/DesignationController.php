@@ -9,12 +9,11 @@ class DesignationController extends Controller
 {
     public function index()
     {
-
         $designations= DB::table('designations')
             ->join('departments','departments.dept_id','=','designations.dept_id')
             ->select('designations.*','departments.dept_title')
             ->get();
-        return view('designation.index',['designations'=>$designations]);
+        return view('designation.index',compact('designations'));
     }
     public function create()
     {
@@ -23,8 +22,10 @@ class DesignationController extends Controller
     }
     public function add_designation(Request $request)
     {
+
+
         $validated = $request->validate([
-            'dept_id'=> 'required|string',
+            'dept_id'=> 'required',
             'designation'=> 'required|string|max:255'
 
         ]);
@@ -38,18 +39,20 @@ class DesignationController extends Controller
     }
     public function edit($id)
     {
-        $designation = DB::table('designations')->where('dept_id',$id)->first();
-        return view('designation.edit', compact('designation'));
+        $designation = DB::table('designations')->where('designation_id',$id)->first();
+
+        $departments  = DB::table('departments')->get();
+        return view('designation.edit', compact('designation','departments'));
     }
 
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'dept_title' => 'required|string',
-            'dept_desc' => 'required|string|max:255',
+            'dept_id' => 'required',
+            'designation' => 'required|string|max:255',
         ]);
 
-        $designation = DB::table('designations')->where('dept_id',$id);
+        $designation = DB::table('designations')->where('designation_id',$id);
         $designation->update($validated);
 
         return redirect()->route('designation.index')->with('success', 'designation updated successfully!');
@@ -57,7 +60,7 @@ class DesignationController extends Controller
     public function delete($id)
     {
 
-        $designation = DB::table('designations')->where('dept_id',$id);
+        $designation = DB::table('designations')->where('designation_id',$id);
         $designation->delete();
 
         return redirect()->route('designation.index')->with('success', 'Designation deleted successfully!');

@@ -230,6 +230,11 @@ $(document).ready(function () {
    });
 
 </script>
+<script type="text/javascript">
+    function confirmDelete(){
+      return confirm("Are you sure you want to delete this ???")
+    }
+</script>
 
 </body>
 

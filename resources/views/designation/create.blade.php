@@ -22,19 +22,19 @@ Employees
                         @csrf
                         <div class="mb-3">
                           <label class="form-label">Department Name</label>
-                          <select name="dept_id" class="form-control @error('dept_title') is-invalid @enderror">
-                            <option selected>Select Department</option>
+                          <select name="dept_id" class="form-control @error('dept_id') is-invalid @enderror">
+                            <option value="">Select Department</option>
                             @foreach ($departments as $department)
                                 <option value="{{$department->dept_id}}">{{$department->dept_title}}</option>
                             @endforeach
                           </select>
-                          @error('dept_title')
+                          @error('dept_id')
                               <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Designation</label>
-                          <input name="designation" class="form-control @error('designation') is-invalid @enderror">{{ old('designation') }}>
+                          <input name="designation" class="form-control @error('designation') is-invalid @enderror">
                           @error('designation')
                               <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
