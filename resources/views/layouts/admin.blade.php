@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -215,7 +216,7 @@
 <script src="{{asset('admin/js/js/popper.min.js')}}"></script>
 <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('admin/js/jquery-3.3.1.min.js')}}"></script>
-
+@yield('scripts')
 <script type="text/javascript">
 $(document).ready(function () {
        $('#sidebarCollapse').on('click', function () {
