@@ -9,43 +9,66 @@ Employees
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                   <h5 class="card-title">Add Employee</h5>
-                  <a href="#" class="btn btn-info">Employee List</a>
+                  <a href="{{route('employee.index')}}" class="btn btn-info">Employee List</a>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-info" role="alert">
+                            {{session('success')}}
+                        </div>
+                    @endif
                     <form action="{{route('add.employees')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                           <label class="form-label">Employee Name</label>
-                          <input type="text" name="emp_name" class="form-control">
+                          <input value="{{ old('emp_name') }}" type="text" name="emp_name" class="form-control @error('emp_name') is-invalid @enderror">
+                          @error('emp_name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Employee Email</label>
-                          <input name="emp_email" type="email" class="form-control">
+                          <input value="{{ old('emp_email') }}" name="emp_email" type="email" class="form-control @error('emp_email') is-invalid @enderror">
+                          @error('emp_email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Mobile No.</label>
-                          <input name="emp_mbl" type="phone" class="form-control">
+                          <input value="{{ old('emp_mbl') }}" name="emp_mbl" type="number" class="form-control @error('emp_mbl') is-invalid @enderror">
+                          @error('emp_mbl')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Employee Department</label>
-                          <select id="dept_dropdown" name="emp_dep_id" class="form-control" aria-label="Default select example">
+                          <select id="dept_dropdown" name="emp_dep_id" class="form-control @error('emp_dep_id') is-invalid @enderror" aria-label="Default select example">
                             <option value="" selected>Select Department</option>
                             @foreach ($departments as $department)
                                 <option value="{{$department->dept_id}}">{{$department->dept_title}}</option>
                             @endforeach
 
                           </select>
+                          @error('emp_dep_id')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
 
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Employee Designation</label>
-                          <select id="designation_dropdown" name="emp_designation_id" class="form-control">
+                          <select id="designation_dropdown" name="emp_designation_id" class="form-control @error('emp_designation_id') is-invalid @enderror">
                             <option value="">--No data yet--</option>
                           </select>
+                          @error('emp_designation_id')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Upload Employee Image</label>
-                          <input class="form-control" type="file" name="profile_pic">
+                          <input class="form-control @error('profile_pic') is-invalid @enderror" type="file" name="profile_pic">
+                          @error('profile_pic')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
