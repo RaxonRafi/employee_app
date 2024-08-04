@@ -180,6 +180,8 @@ class EmployeesController extends Controller
             ->update([
             'deleted_at' => null
             ]);
+
+
         }
 
         if ($employee) {
@@ -198,6 +200,9 @@ class EmployeesController extends Controller
             DB::table('employees')
             ->where('emp_id', $id)
             ->delete();
+            if ($employee->profile_pic && file_exists(public_path('images') . '/' . $employee->profile_pic)) {
+                unlink(public_path('images') . '/' . $employee->profile_pic);
+            }
         }
 
         if ($employee) {
