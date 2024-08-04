@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,7 @@ class EmployeesController extends Controller
         ->join('designations','designations.designation_id','=','employees.emp_designation_id')
         ->join('departments','departments.dept_id','=','employees.emp_dep_id')
         ->select('employees.*','departments.dept_title','designations.designation')
+        // ->whereNull('deleted_at')
         ->get();
         return view('employees.index',compact('employees'));
 
@@ -28,7 +30,7 @@ class EmployeesController extends Controller
         $designations=DB::table('designations')->where('dept_id',$request->dept_id)->get();
 
         if ($designations->count() == 0){
-            $str_to_send=" <option value=''>--No subcategory yet--</option>";
+            $str_to_send=" <option value=''>--No designations yet--</option>";
         }
         else{
             $str_to_send =  "<option value=''>--Choose One--</option>";
@@ -81,6 +83,126 @@ class EmployeesController extends Controller
 
         return back()->with('success','Employee Added Successfully!');
 
+    }
+    public function edit($id)
+    {
+        $employee = DB::table('employees')
+        ->join('designations','designations.designation_id','=','employees.emp_designation_id')
+        ->join('departments','departments.dept_id','=','employees.emp_dep_id')
+        ->select('employees.*','departments.dept_title','designations.designation')
+        ->where('emp_id',$id)
+        ->first();
+        $departments = DB::table('departments')->get();
+        return view('employees.edit', compact('employee','departments'));
+    }
+    public function update(Request $request, $id)
+    {
+
+    $validated = $request->validate([
+        "emp_designation_id" => 'required',
+        "emp_dep_id" => 'required',
+        "emp_name" => 'required|string|max:50',
+        "emp_mbl" => 'numeric|digits:11',
+        "emp_email" => 'required|email',
+        "profile_pic" => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+    ]);
+
+    $employee = DB::table('employees')->where('emp_id', $id)->first();
+    $user = DB::table('users')->where('email', $employee->emp_email)->first();
+
+    if ($request->hasFile('profile_pic')) {
+
+        $imageName = time() . '.' . $request->profile_pic->extension();
+        $request->profile_pic->move(public_path('images'), $imageName);
+
+
+        if ($employee->profile_pic && file_exists(public_path('images') . '/' . $employee->profile_pic)) {
+            unlink(public_path('images') . '/' . $employee->profile_pic);
+        }
+
+
+        $validated['profile_pic'] = $imageName;
+
+    } else {
+
+        $validated['profile_pic'] = $employee->profile_pic;
+    }
+    DB::table('employees')->where('emp_id', $id)->update($validated);
+
+    if ($user) {
+
+        DB::table('users')->upsert([
+            'name' => $request->emp_name,
+            'email' => $request->emp_email,
+            'profile_pic' => $validated['profile_pic'],
+            'password'=> Hash::make('123456789'),
+            'updated_at' => now()
+        ],'email');
+    }
+
+        return redirect()->route('employee.index')->with('success', 'Employee updated successfully!');
+    }
+    public function softDelete($id)
+    {
+        $employee = DB::table('employees')->where('emp_id',$id)->first();
+
+        $user_deleted = DB::table('users')
+                        ->where('email', $employee->emp_email)
+                        ->update([
+                            'deleted_at' => Carbon::now()
+                        ]);
+
+        if($user_deleted){
+
+            DB::table('employees')
+            ->where('emp_id', $id)
+            ->update([
+                'deleted_at' => Carbon::now()
+            ]);
+        }
+
+        return back()->with('success','Employee Deleted Successfully');
+
+    }
+    public function restore($id)
+    {
+        $employee = DB::table('employees')->where('emp_id', $id)->first();
+
+        $user_deleted = DB::table('users')
+        ->where('email', $employee->emp_email)
+        ->update([
+            'deleted_at' => null
+        ]);
+
+        if($user_deleted){
+            DB::table('employees')
+            ->where('emp_id', $id)
+            ->update([
+            'deleted_at' => null
+            ]);
+        }
+
+        if ($employee) {
+            return redirect()->back()->with('success', 'Employee restored successfully.');
+        }
+    }
+    public function destroy($id)
+    {
+        $employee = DB::table('employees')->where('emp_id', $id)->first();
+
+        $user_deleted = DB::table('users')
+        ->where('email', $employee->emp_email)
+        ->delete();
+
+        if($user_deleted){
+            DB::table('employees')
+            ->where('emp_id', $id)
+            ->delete();
+        }
+
+        if ($employee) {
+            return redirect()->back()->with('success', 'Employee restored successfully.');
+        }
     }
 
 }

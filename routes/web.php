@@ -30,6 +30,11 @@ Route::controller(EmployeesController::class)->group(function(){
     Route::get('/employees/create','create')->name('employee.create');
     Route::post('/get/designations','getdesignations')->name('get.designations');
     Route::post('/employees/add','add_employees')->name('add.employees');
+    Route::get('/employees/{id}/edit','edit')->name('edit.employees');
+    Route::put('/employees/{id}','update')->name('update.employees');
+    Route::get('/employees/{id}/soft-delete','softDelete')->name('softDelete.employees');
+    Route::get('/employees/{id}/restore','restore')->name('restore.employees');
+    Route::get('/employees/{id}/force-delete','destroy')->name('destroy.employees');
 });
 Route::controller(DesignationController::class)->group(function(){
     Route::get('/designation/index','index')->name('designation.index');
