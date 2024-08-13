@@ -82,11 +82,10 @@
                 </li>
 				</div>
 
-
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
 					<i class="material-icons">aspect_ratio</i><span>Projects</span></a>
-                    <!-- <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+                    <ul class="collapse list-unstyled menu" id="homeSubmenu1">
                         <li>
                             <a href="#">Add Project</a>
                         </li>
@@ -96,15 +95,15 @@
                         <li>
                             <a href="#">Home 3</a>
                         </li>
-                    </ul> -->
-                </li>
+                    </ul>
+                </li> --}}
 
                 <li class="{{request()->is('department*') ? 'active':''}} ">
                     <a href="{{route('department.index')}}">
 					<i class="material-icons">apps</i><span>Department</span></a>
 
                 </li>
-                <li class="{{request()->is('designation*') ? 'active':''}} ">
+                <li class="{{request()->is('designation*') ? 'active':''}}">
                     <a href="{{route('designation.index')}}">
 					<i class="material-icons">apps</i><span>Designation</span></a>
                 </li>
@@ -133,9 +132,10 @@
                         </li>
                     </ul>
                 </li>
-				  <li class="dropdown">
-                    <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-					<i class="material-icons">extension</i><span>Salaries</span></a>
+				  <li class="{{request()->is('payroll*') ? 'active':''}}">
+                    <a href="{{route('payroll.index')}}">
+					<i class="material-icons">extension</i><span>Payroll</span>
+                </a>
 
                 </li>
 

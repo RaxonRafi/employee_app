@@ -16,7 +16,6 @@ class EmployeesController extends Controller
         ->join('designations','designations.designation_id','=','employees.emp_designation_id')
         ->join('departments','departments.dept_id','=','employees.emp_dep_id')
         ->select('employees.*','departments.dept_title','designations.designation')
-        // ->whereNull('deleted_at')
         ->get();
         return view('employees.index',compact('employees'));
 

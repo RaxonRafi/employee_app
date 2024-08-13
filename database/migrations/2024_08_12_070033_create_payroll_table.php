@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('salaries', function (Blueprint $table) {
-            $table->id('salary_id');
-            $table->foreignId('salary_emp_id')
+        Schema::create('payroll', function (Blueprint $table) {
+            $table->id('payroll_id');
+            $table->foreignId('emp_id')
             ->references('emp_id')
             ->on('employees')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->integer('salary_ammount');
-            $table->string('salary_month');
-            $table->date('salary_date');
+            $table->decimal('basic_salary', 10, 2);
+            $table->decimal('medical_allowance', 10, 2);
+            $table->decimal('festival_bonuse', 10, 2)->nullable();
+            $table->decimal('tax', 10, 2);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('salaries');
+        Schema::dropIfExists('payroll');
     }
 };

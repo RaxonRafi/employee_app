@@ -4,6 +4,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -51,5 +52,13 @@ Route::controller(DepartmentController::class)->group(function(){
     Route::get('/department/{id}/edit','edit')->name('department.edit');
     Route::put('/department/{id}','update')->name('department.update');
     Route::get('/department/{id}','delete')->name('department.delete');
+});
+Route::controller(PayrollController::class)->group(function(){
+    Route::get('/payroll/index','index')->name('payroll.index');
+    Route::get('/payroll/create','create')->name('payroll.create');
+    Route::post('/payroll/add','add_payroll')->name('payroll.add');
+    Route::get('/payroll/edit/{id}','edit')->name('payroll.edit');
+    Route::put('/payroll/update/{id}','update')->name('payroll.update');
+
 });
 
