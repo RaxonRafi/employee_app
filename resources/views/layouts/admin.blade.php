@@ -81,22 +81,7 @@
                     <a href="#"><i class="material-icons">settings</i><span>setting</span></a>
                 </li>
 				</div>
-
-                {{-- <li class="dropdown">
-                    <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-					<i class="material-icons">aspect_ratio</i><span>Projects</span></a>
-                    <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-                        <li>
-                            <a href="#">Add Project</a>
-                        </li>
-                        <li>
-                            <a href="#"></a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li> --}}
+                @hasrole('admin')
 
                 <li class="{{request()->is('department*') ? 'active':''}} ">
                     <a href="{{route('department.index')}}">
@@ -143,15 +128,25 @@
                     <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
 					<i class="material-icons">border_color</i><span>Roles & Permissions</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu5">
-                        <li>
-                            <a href="#">Roles</a>
+                        <li class="{{request()->is('role*') ? 'active':''}}">
+                            <a href="{{route('users.index')}}">Users</a>
                         </li>
-                        <li>
-                            <a href="#">Permissions</a>
+                        <li class="{{request()->is('role*') ? 'active':''}}">
+                            <a href="{{route('role.index')}}">role</a>
                         </li>
+                        {{-- <li class="{{request()->is('permission*') ? 'active':''}}">
+                            <a href="{{route('permission.index')}}">Permissions</a>
+                        </li> --}}
 
                     </ul>
                 </li>
+                @else
+                <li>
+                    <a href="#">
+					    <i class="material-icons">extension</i><span>Profile</span>
+                    </a>
+                </li>
+                @endhasrole
 				<li class="dropdown">
                     <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();

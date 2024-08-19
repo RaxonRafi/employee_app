@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('admin.dashboard')
+@section('title')
+Permissions
+@endsection
 
 @section('content')
 

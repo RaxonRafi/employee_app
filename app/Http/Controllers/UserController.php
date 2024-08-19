@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -18,6 +21,37 @@ class UserController extends Controller
     {
         $users = User::all();
         return view('role-permission.users.index',compact('users'));
+    }
+    public function assignrole($id)
+    {
+        $user = User::where('id',$id)->first();
+        $roles = Role::all();
+        return view('role-permission.users.assign-role',compact('roles','user'));
+
+        // $user->syncRoles(['writer', 'admin']);
+
+    }
+    public function updaterole(Request $request,$id)
+    {
+        $validated = $request->validate([
+            'role'=> "required",
+        ]);
+
+        $user = User::where('id', $id)->first();  // Retrieve the user as a model instance
+
+        if ($user) {
+
+            $user->update([
+                'role' => $request->role
+            ]);
+
+            $user->syncRoles($request->role);
+
+            return redirect()->route('users.index')->with('success', 'Role Updated Successfully!');
+        }
+        //$users = User::all();
+        //return view('role-permission.users.index',compact('users'));
+
     }
 
     /**

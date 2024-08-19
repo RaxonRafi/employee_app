@@ -1,13 +1,15 @@
-@extends('layouts.app')
-
+@extends('admin.dashboard')
+@section('title')
+Roles
+@endsection
 @section('content')
 
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
+                @if (session('success'))
+                    <div class="alert alert-info" role="alert">
+                        {{session('success')}}
                     </div>
                 @endif
                 <div class="card">
@@ -35,7 +37,8 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role}}</td>
                                     <td>
-                                        <a href="{{url('users/'.$user->id.'/give-permission')}}" type="button" class="btn btn-success">Edit/Assign Role</a>
+                                        <a href="{{route('assign.role',$user->id)}}" type="button" class="btn btn-success">Edit/Assign Role</a>
+                                        {{-- <a href="{{url('users/'.$user->id.'/assign-role')}}" type="button" class="btn btn-success">Edit/Assign Role</a> --}}
                                         <a href="{{url('users/'.$user->id.'/edit')}}" type="button" class="btn btn-warning">Edit</a>
                                         <a href="{{url('users/'.$user->id.'/delete')}}" type="button" class="btn btn-danger">Delete</a>
                                     </td>

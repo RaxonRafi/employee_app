@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('admin.dashboard')
+@section('title')
+ Add Permission To Roles
+@endsection
 @section('content')
 
     <div class="container">

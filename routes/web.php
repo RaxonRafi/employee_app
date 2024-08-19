@@ -18,13 +18,18 @@ Route::get('/',[HomeController::class,'index']);
 Auth::routes();
 
 Route::get('/home',[HomeController::class,'dashboard'])->name('dashboard')->middleware('auth');
-Route::resource('permission',PermissionController::class);
-Route::get('permission/{id}/delete',[PermissionController::class,'destroy']);
-Route::resource('role',RoleController::class);
-Route::get('role/{id}/delete',[RoleController::class,'destroy']);
-Route::get('role/{id}/give-permission',[RoleController::class,'addPermissionToRole']);
-Route::put('role/{id}/give-permission',[RoleController::class,'givePermissionToRole']);
-Route::resource('users',UserController::class);
+
+Route::group(['middleware' => ['role:admin']],function(){
+
+    Route::resource('permission',PermissionController::class);
+    Route::get('permission/{id}/delete',[PermissionController::class,'destroy']);
+    Route::resource('role',RoleController::class);
+    Route::get('role/{id}/delete',[RoleController::class,'destroy']);
+    Route::get('role/{id}/give-permission',[RoleController::class,'addPermissionToRole']);
+    Route::put('role/{id}/give-permission',[RoleController::class,'givePermissionToRole']);
+    Route::get('users/{id}/assign-role',[UserController::class,'assignrole'])->name('assign.role');
+    Route::put('users/{id}/update-role',[UserController::class,'updaterole'])->name('update.role');
+    Route::resource('users',UserController::class);
 
 Route::controller(EmployeesController::class)->group(function(){
     Route::get('/employees/index','index')->name('employee.index');
@@ -62,3 +67,4 @@ Route::controller(PayrollController::class)->group(function(){
 
 });
 
+});

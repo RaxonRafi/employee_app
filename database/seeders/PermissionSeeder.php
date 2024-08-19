@@ -33,6 +33,9 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name'=> 'delete_role',
         ]);
+        Permission::create([
+            'name'=> 'assign_role',
+        ]);
         //assiging permissions to roles
         $admin = Role::where('name','admin')->first();
         $admin->givePermissionTo([
@@ -42,6 +45,7 @@ class PermissionSeeder extends Seeder
             'create_role',
             'edit_role',
             'delete_role',
+            'assign_role'
         ]);
 
     }

@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('admin.dashboard')
+@section('title')
+Roles
+@endsection
 @section('content')
 
     <div class="container">
@@ -32,8 +34,8 @@
                                     <td>{{$role->name}}</td>
                                     <td>
                                         <a href="{{url('role/'.$role->id.'/give-permission')}}" type="button" class="btn btn-success">Edit/Add Role Permissions</a>
-                                        <a href="{{url('role/'.$role->id.'/edit')}}" type="button" class="btn btn-warning">Edit</a>
-                                        <a href="{{url('role/'.$role->id.'/delete')}}" type="button" class="btn btn-danger">Delete</a>
+                                        {{-- <a href="{{url('role/'.$role->id.'/edit')}}" type="button" class="btn btn-warning">Edit</a>
+                                        <a href="{{url('role/'.$role->id.'/delete')}}" type="button" class="btn btn-danger">Delete</a> --}}
                                     </td>
                                 </tr>
                                 @endforeach
