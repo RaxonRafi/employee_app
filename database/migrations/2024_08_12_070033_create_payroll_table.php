@@ -20,6 +20,8 @@ return new class extends Migration
             ->onUpdate('cascade');
             $table->decimal('basic_salary', 10, 2);
             $table->decimal('medical_allowance', 10, 2);
+            $table->decimal('conveyance_allowance', 10, 2);
+            $table->decimal('house_rent_allowance', 10, 2);
             $table->decimal('festival_bonuse', 10, 2)->nullable();
             $table->decimal('tax', 10, 2);
             $table->timestamps();

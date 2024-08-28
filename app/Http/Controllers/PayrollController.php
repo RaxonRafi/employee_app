@@ -28,6 +28,8 @@ class PayrollController extends Controller
             "emp_id"=>'required',
             "basic_salary"=>'required|numeric',
             "medical_allowance"=>'required|numeric',
+            "house_rent_allowance"=>'required|numeric',
+            "conveyance_allowance"=>'required|numeric',
             "festival_bonuse"=>'numeric',
             "tax"=>'numeric',
 
@@ -37,6 +39,8 @@ class PayrollController extends Controller
             "basic_salary"=>$request->basic_salary,
             "medical_allowance"=>$request->medical_allowance,
             "festival_bonuse"=>$request->festival_bonuse,
+            "house_rent_allowance"=>$request->house_rent_allowance,
+            "conveyance_allowance"=>$request->conveyance_allowance,
             "tax"=>$request->tax,
             'created_at'=> now(),
             'updated_at'=> now()
@@ -63,6 +67,8 @@ class PayrollController extends Controller
             "emp_id"=>'required',
             "basic_salary"=>'required|numeric',
             "medical_allowance"=>'required|numeric',
+            "house_rent_allowance"=>'required|numeric',
+            "conveyance_allowance"=>'required|numeric',
             "festival_bonuse"=>'numeric',
             "tax"=>'numeric',
 

@@ -27,8 +27,10 @@ Payroll
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Basic Salary</th>
-                                    <th>Medical Allowncess</th>
-                                    <th>Festible Allowncess</th>
+                                    <th>Medical Allowance</th>
+                                    <th>House Rent Allowance</th>
+                                    <th>Conveyance Allowance</th>
+                                    <th>Festible Allowance</th>
                                     <th>Tax</th>
                                     <th>Net Salary</th>
                                     <th>Action</th>
@@ -42,9 +44,12 @@ Payroll
                                         <td>{{$payroll->emp_name}}</td>
                                         <td>{{$payroll->basic_salary}}</td>
                                         <td>{{$payroll->medical_allowance}}</td>
+                                        <td>{{$payroll->house_rent_allowance}}</td>
+                                        <td>{{$payroll->conveyance_allowance}}</td>
                                         <td>{{$payroll->festival_bonuse}}</td>
                                         <td>{{$payroll->tax}}</td>
-                                        <td>{{($payroll->basic_salary +$payroll->medical_allowance+ $payroll->festival_bonuse)-$payroll->tax}}</td>
+                                        <td>{{($payroll->basic_salary +$payroll->medical_allowance
+                                        +$payroll->festival_bonuse+$payroll->house_rent_allowance+$payroll->conveyance_allowance)-$payroll->tax}}</td>
                                         <td class="d-flex">
                                             <a href="{{route('payroll.edit',$payroll->emp_id)}}" type="button" class="btn btn-dark">Edit</a>
                                         </td>

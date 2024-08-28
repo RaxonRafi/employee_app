@@ -49,8 +49,6 @@ class UserController extends Controller
 
             return redirect()->route('users.index')->with('success', 'Role Updated Successfully!');
         }
-        //$users = User::all();
-        //return view('role-permission.users.index',compact('users'));
 
     }
 
@@ -59,7 +57,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('role-permission.users.create',compact('roles'));
     }
 
     /**
@@ -67,7 +66,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::where('email',$request->email)->first();
+        if ($user) {
+
+            return back()->with('success','user already exists with this mail!');
+
+        } else {
+            if($request->role === "user"){
+
+                DB::table('users')->insert([
+
+                ]);
+
+            }
+
+            DB::table('users')->insert([
+
+            ]);
+            
+        }
+        return $request;
     }
 
     /**

@@ -33,15 +33,29 @@ Payroll
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Basic Salary</label>
-                          <input value="{{ old('basic_salary') }}" name="basic_salary" type="number" class="form-control @error('basic_salary') is-invalid @enderror">
+                          <input id="basic_salary" value="{{ old('basic_salary') }}" name="basic_salary" type="number" class="form-control @error('basic_salary') is-invalid @enderror">
                           @error('basic_salary')
                             <div class="invalid-feedback">{{ $message }}</div>
                          @enderror
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Medical Allowance</label>
-                          <input value="{{ old('medical_allowance') }}" name="medical_allowance" type="number" class="form-control @error('medical_allowance') is-invalid @enderror">
+                          <input id="medical_allowance" readonly value="{{ old('medical_allowance') }}" name="medical_allowance" type="number" class="form-control @error('medical_allowance') is-invalid @enderror">
                           @error('medical_allowance')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Conveyance Allowance</label>
+                          <input readonly id="conveyance_allowance" value="{{ old('conveyance_allowance') }}" name="conveyance_allowance" type="number" class="form-control @error('conveyance_allowance') is-invalid @enderror">
+                          @error('conveyance_allowance')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                         @enderror
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">House rent Allowance</label>
+                          <input readonly id="house_rent_allowance" value="{{ old('house_rent_allowance') }}" name="house_rent_allowance" type="number" class="form-control @error('house_rent_allowance') is-invalid @enderror">
+                          @error('house_rent_allowance')
                             <div class="invalid-feedback">{{ $message }}</div>
                          @enderror
                         </div>
@@ -54,7 +68,7 @@ Payroll
                         </div>
                         <div class="mb-3">
                           <label class="form-label">Income Tax</label>
-                          <input value="{{ old('tax') }}" name="tax" type="number" class="form-control @error('tax') is-invalid @enderror">
+                          <input readonly  id="tax" value="{{ old('tax') }}" name="tax" type="number" class="form-control @error('tax') is-invalid @enderror">
                           @error('tax')
                             <div class="invalid-feedback">{{ $message }}</div>
                          @enderror
@@ -70,28 +84,30 @@ Payroll
 
 @section('scripts')
 <script>
-    $(document).ready(function(){
-       $('#dept_dropdown').change(function(){
-           var dept_id = $(this).val();
-        //ajax setup start
-           $.ajaxSetup({
-         headers: {
-             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-   $.ajax({
-       type : 'POST',
-       url : "{{route('get.designations')}}",
-       data:{dept_id:dept_id},
-       success: function(data){
 
-           $('#designation_dropdown').html(data);
-       }
-   });
-     //ajax setup end
-       })
+$(document).ready(function () {
+    $('#basic_salary').on('input', function () {
+        const basic_salary = parseFloat($(this).val());
+        const yearly_salary = basic_salary*12;
+        const medical_allowance = (basic_salary*0.10).toFixed(2);
+        $('#medical_allowance').val(medical_allowance);
+        const conveyance_allowance = (basic_salary*0.10).toFixed(2);
+        $('#conveyance_allowance').val(conveyance_allowance);
+        const house_rent_allowance = (basic_salary*0.50).toFixed(2);
+        $('#house_rent_allowance').val(house_rent_allowance);
+
+        if(yearly_salary>350000)
+        {
+            const tax = basic_salary*0.10
+            $('#tax').val(tax);
+
+        }else {
+            $('#tax').val(0)
+        }
+
 
     });
+});
 
 </script>
 @endsection

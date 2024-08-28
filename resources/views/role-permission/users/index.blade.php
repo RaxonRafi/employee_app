@@ -16,7 +16,7 @@ Roles
 
                     <div class="card-header d-flex justify-content-between align-center">
                       <h4 class="card-title">Users</h4>
-                      <a href="{{url('role/create')}}" type="button" class="btn btn-info ">Create users</a>
+                      <a href="{{url('users/create')}}" type="button" class="btn btn-info ">Create Admin</a>
                     </div>
                     <div class="card-body">
                         <table class="table">
