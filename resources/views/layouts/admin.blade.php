@@ -117,12 +117,18 @@
                         </li>
                     </ul>
                 </li>
+				  <li class="{{request()->is('attendance*') ? 'active':''}}">
+                    <a href="{{route('attendance.index')}}">
+					    <i class="material-icons">extension</i><span>Attendance</span>
+                    </a>
+
+                  </li>
 				  <li class="{{request()->is('payroll*') ? 'active':''}}">
                     <a href="{{route('payroll.index')}}">
-					<i class="material-icons">extension</i><span>Payroll</span>
-                </a>
+					    <i class="material-icons">extension</i><span>Payroll</span>
+                    </a>
 
-                </li>
+                  </li>
 
 				<li class="dropdown">
                     <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

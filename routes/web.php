@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeesController;
@@ -64,6 +65,11 @@ Route::controller(PayrollController::class)->group(function(){
     Route::post('/payroll/add','add_payroll')->name('payroll.add');
     Route::get('/payroll/edit/{id}','edit')->name('payroll.edit');
     Route::put('/payroll/update/{id}','update')->name('payroll.update');
+
+});
+Route::controller(AttendanceController::class)->group(function(){
+    Route::get('/attendance/index','index')->name('attendance.index');
+    Route::post('/attendance','store')->name('attendance.store');
 
 });
 
