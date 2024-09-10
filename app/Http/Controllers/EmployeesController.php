@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class EmployeesController extends Controller
 {
@@ -47,13 +49,15 @@ class EmployeesController extends Controller
             "emp_dep_id"=>'required',
             "emp_name"=>'required|string|max:50',
             "emp_mbl"=>'numeric|digits:11',
-            "profile_pic"=>'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            "profile_pic"=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             "emp_designation_id"=>'required',
 
         ]);
 
-        $imageName = time().'.'.$request->profile_pic->extension();
-        $request->profile_pic->move(public_path('images'), $imageName);
+
+            $imageName =time().'.'.$request->profile_pic->extension();
+            $request->profile_pic->move(public_path('images'), $imageName);
+
 
         $employees = DB::table('employees')->insert(
             [
@@ -62,7 +66,7 @@ class EmployeesController extends Controller
                 'emp_name'=> $request->emp_name,
                 'emp_mbl'=> $request->emp_mbl,
                 'emp_email'=> $request->emp_email,
-                'profile_pic'=> $imageName,
+                'profile_pic'=> $imageName  ,
                 'created_at'=> now(),
                 'updated_at'=> now()
             ]
@@ -78,7 +82,8 @@ class EmployeesController extends Controller
                 'created_at'=> now(),
                 'updated_at'=> now()
             ]);
-            $user = DB::table('users')->where('id',$user_insert_id)->first();
+
+            $user = User::find($user_insert_id);
             $user->assignRole('user');
 
         }
