@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
@@ -73,4 +74,13 @@ Route::controller(AttendanceController::class)->group(function(){
 
 });
 
+
+
+});
+Route::controller(LeaveRequestController::class)->group(function(){
+    //Route::get('/leave-request','index')->name('leave.emp.index');
+    Route::get('/leave-request','index_admin')->name('leave.admin.index');
+    Route::get('/request/leave','index_emp')->name('leave.emp.index');
+    Route::post('/request/leave','store')->name('leave.store');
+    Route::post('/leave-request/{id}/{status}','updateStatus')->name('leave.update.status');
 });

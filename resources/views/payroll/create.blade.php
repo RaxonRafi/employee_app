@@ -105,7 +105,6 @@ $(document).ready(function () {
             $('#tax').val(0)
         }
 
-
     });
 });
 

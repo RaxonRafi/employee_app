@@ -10,7 +10,6 @@ class PayrollController extends Controller
     public function index()
     {
 
-
         $payrolls = DB::table('payroll')
         ->join('employees','employees.emp_id','=','payroll.emp_id')
         ->select('employees.emp_name','payroll.*')

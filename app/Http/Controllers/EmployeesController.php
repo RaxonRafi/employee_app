@@ -69,7 +69,7 @@ class EmployeesController extends Controller
         );
 
         if($employees){
-            DB::table('users')->insert([
+            $user_insert_id = DB::table('users')->insertGetId([
                 'name'=> $request->emp_name,
                 'email'=>$request->emp_email,
                 'role'=>'user',
@@ -78,6 +78,9 @@ class EmployeesController extends Controller
                 'created_at'=> now(),
                 'updated_at'=> now()
             ]);
+            $user = DB::table('users')->where('id',$user_insert_id)->first();
+            $user->assignRole('user');
+
         }
 
         return back()->with('success','Employee Added Successfully!');

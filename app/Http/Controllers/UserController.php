@@ -28,8 +28,6 @@ class UserController extends Controller
         $roles = Role::all();
         return view('role-permission.users.assign-role',compact('roles','user'));
 
-        // $user->syncRoles(['writer', 'admin']);
-
     }
     public function updaterole(Request $request,$id)
     {
@@ -64,29 +62,29 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $user = User::where('email',$request->email)->first();
-        if ($user) {
+    // public function store(Request $request)
+    // {
+    //     $user = User::where('email',$request->email)->first();
+    //     if ($user) {
 
-            return back()->with('success','user already exists with this mail!');
+    //         return back()->with('success','user already exists with this mail!');
 
-        } else {
-            if($request->role === "user"){
+    //     } else {
+    //         if($request->role === "user"){
 
-                DB::table('users')->insert([
+    //             DB::table('users')->insert([
 
-                ]);
+    //             ]);
 
-            }
+    //         }
 
-            DB::table('users')->insert([
+    //         DB::table('users')->insert([
 
-            ]);
-            
-        }
-        return $request;
-    }
+    //         ]);
+
+    //     }
+    //     return $request;
+    // }
 
     /**
      * Display the specified resource.

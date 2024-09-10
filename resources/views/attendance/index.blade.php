@@ -20,7 +20,6 @@ Attendance
                 @endif
                     <form action="{{ route('attendance.store') }}" method="POST">
                         @csrf
-
                         <div class="d-flex pb-3">
                             <label for="date">Date:</label>
                             <input class="form-control @error('date') is-invalid @enderror" style="width: 20%" type="date" id="date" name="date" required><br>

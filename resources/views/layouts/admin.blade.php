@@ -106,14 +106,8 @@
 
 					<span>Leaves</span></a>
                     <ul class="collapse list-unstyled menu" id="pageSubmenu3">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
+                        <li class="{{request()->is('leave-request*') ? 'active':''}}">
+                            <a href="{{route('leave.admin.index')}}">Leave Requests</a>
                         </li>
                     </ul>
                 </li>
@@ -151,6 +145,14 @@
                     <a href="#">
 					    <i class="material-icons">extension</i><span>Profile</span>
                     </a>
+                </li>
+                @endhasrole
+                @hasrole('user')
+                <li class="{{request()->is('leave-request*') ? 'active':''}}">
+                    <a href="{{route('leave.store')}}">
+					    <i class="material-icons">extension</i><span>Request Leave</span>
+                    </a>
+
                 </li>
                 @endhasrole
 				<li class="dropdown">
