@@ -71,7 +71,8 @@ Route::controller(PayrollController::class)->group(function(){
 Route::controller(AttendanceController::class)->group(function(){
     Route::get('/attendance/index','index')->name('attendance.index');
     Route::post('/attendance','store')->name('attendance.store');
-    Route::get('generate-pdf','generatePDF')->name('generate.pdf');
+    Route::get('/filter-attendence','filter_attendence')->name('filter.attendence');
+    Route::post('generate-pdf','generatePDF')->name('generate.pdf');
 });
 
 });

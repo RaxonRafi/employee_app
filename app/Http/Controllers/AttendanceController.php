@@ -14,12 +14,18 @@ class AttendanceController extends Controller
         $employees = DB::table('employees')->get();
         return view('attendance.index', compact('employees'));
     }
-public function generatePDF()
+    public function filter_attendence()
+    {
+       return view('attendance.attendence-filter');
+    }
+public function generatePDF(Request $request)
     {
         $attendanceData = DB::table('attendence')
-            ->join('employees', 'attendence.emp_id', '=', 'employees.emp_id')
-            ->select('employees.emp_name', 'attendence.date', 'attendence.present')
-            ->get();
+        ->join('employees', 'attendence.emp_id', '=', 'employees.emp_id')
+        ->select('employees.emp_name', 'attendence.date', 'attendence.present')
+        ->whereBetween('attendence.date', [$request->start_date,$request->end_date])
+        ->orderBy('attendence.date', 'asc')
+        ->get();
 
         $pdf = PDF::loadView('attendance.attendance-sheet', ['attendanceData' => $attendanceData]);
 
