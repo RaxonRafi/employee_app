@@ -74,8 +74,6 @@ Route::controller(AttendanceController::class)->group(function(){
 
 });
 
-
-
 });
 Route::controller(LeaveRequestController::class)->group(function(){
     //Route::get('/leave-request','index')->name('leave.emp.index');
