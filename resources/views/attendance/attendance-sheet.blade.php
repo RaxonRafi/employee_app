@@ -36,7 +36,7 @@
         <tbody>
             @foreach ($attendanceData as $attendance)
                 <tr>
-                    <td>{{ $attendance->name }}</td>
+                    <td>{{ $attendance->emp_name }}</td>
                     <td>{{ $attendance->date }}</td>
                     <td>{{ $attendance->present }}</td>
                 </tr>
