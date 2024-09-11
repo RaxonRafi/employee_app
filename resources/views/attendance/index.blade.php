@@ -9,7 +9,7 @@ Attendance
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                   <h5 class="card-title">Employee Attendance</h5>
-                  {{-- <a href="{{route('attendance.store')}}" class="btn btn-info">Add a Department</a> --}}
+                  <a href="{{route('generate.pdf')}}" class="btn btn-info">Attendance sheet</a>
                 </div>
 
                 <div class="card-body">
