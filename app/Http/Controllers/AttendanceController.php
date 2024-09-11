@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use pdf;
 
 class AttendanceController extends Controller
 {
@@ -13,7 +14,19 @@ class AttendanceController extends Controller
         $employees = DB::table('employees')->get();
         return view('attendance.index', compact('employees'));
     }
+public function generatePDF()
+    {
+        $attendanceData = DB::table('attendence')
+            ->join('employees', 'attendence.emp_id', '=', 'employees.emp_id')
+            ->select('employees.emp_name', 'attendence.date', 'attendence.present')
+            ->get();
 
+        $pdf = Pdf::loadView('attendance.attendance-sheet', ['attendanceData' => $attendanceData]);
+
+        return $pdf->download('employee_attendance_sheet.pdf');
+
+
+    }
     public function store(Request $request)
     {
 
