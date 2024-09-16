@@ -31,6 +31,7 @@ class HomeController extends Controller
 
     public function dashboard()
     {
+     
         $total_user = DB::table('users')->count();
         $total_employees = DB::table('employees')->count();
 

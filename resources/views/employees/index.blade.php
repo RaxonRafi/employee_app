@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('layouts.admin')
 @section('title')
 Employees
 @endsection
@@ -123,7 +123,7 @@ Employees
                       @else
                       <div class="text-center" style="color: red;font-weight:bold">No data to show!</div>
                       @endif
-                      
+
                     </div>
 
                 </div>

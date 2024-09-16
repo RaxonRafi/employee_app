@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('layouts.admin')
 @section('title')
 Leave Requests
 @endsection
@@ -26,7 +26,7 @@ Leave Requests
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Status</th>
-                               
+
                             </tr>
                         </thead>
                             <tbody>

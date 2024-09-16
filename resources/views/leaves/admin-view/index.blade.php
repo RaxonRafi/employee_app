@@ -1,4 +1,4 @@
-@extends('admin.dashboard')
+@extends('layouts.admin')
 @section('title')
 Leave Requests
 @endsection
@@ -9,8 +9,8 @@ Leave Requests
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
-                  <h5 class="card-title">List of Departments</h5>
-                  <a href="{{route('department.create')}}" class="btn btn-info">Add a Department</a>
+                  <h5 class="card-title">List of Leave Requests</h5>
+        
                 </div>
                 <div class="card-body">
                     @if (session('success'))
