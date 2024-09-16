@@ -31,13 +31,18 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $total_user = DB::table('users')->count();
+        $total_employees = DB::table('employees')->count();
+
+        $employees = DB::table('employees')
+        ->join('designations','designations.designation_id','=','employees.emp_designation_id')
+        ->join('departments','departments.dept_id','=','employees.emp_dep_id')
+        ->select('employees.*','departments.dept_title','designations.designation')
+        ->get();
+
+        return view('admin.dashboard',compact('total_user','total_employees','employees'));
     }
-    // public function userView()
-    // {
-    //     $roles = DB::table('roles')->get();
-    //     return view('layouts.admin',compact('roles'));
-    // }
+
 }
 
 

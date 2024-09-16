@@ -141,11 +141,11 @@
                     </ul>
                 </li>
                 @else
-                <li>
+                {{-- <li>
                     <a href="#">
-					    <i class="material-icons">extension</i><span>Profile</span>
+					    <i class="material-icons">extension</i><span>Update Profile</span>
                     </a>
-                </li>
+                </li> --}}
                 @endhasrole
                 @hasrole('user')
                 <li class="{{request()->is('leave-request*') ? 'active':''}}">

@@ -16,14 +16,14 @@ Employees
                                     </div>
                                     <div class="card-content">
                                         <p class="category"><strong>Users</strong></p>
-                                        <h3 class="card-title">70,340</h3>
+                                        <h3 class="card-title">{{$total_user}}</h3>
                                     </div>
-                                    <div class="card-footer">
+                                    {{-- <div class="card-footer">
                                         <div class="stats">
                                             <i class="material-icons text-info">info</i>
                                             <a href="#pablo">See detailed report</a>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -35,14 +35,14 @@ Employees
                                         </div>
                                     </div>
                                     <div class="card-content">
-                                        <p class="category"><strong>Projects</strong></p>
-                                        <h3 class="card-title">102</h3>
+                                        <p class="category"><strong>Employees</strong></p>
+                                        <h3 class="card-title">{{$total_employees}}</h3>
                                     </div>
-                                    <div class="card-footer">
+                                    {{-- <div class="card-footer">
                                         <div class="stats">
                                             <i class="material-icons">local_offer</i> Product-wise sales
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -59,11 +59,11 @@ Employees
                                         <p class="category"><strong>Revenue</strong></p>
                                         <h3 class="card-title">$23,100</h3>
                                     </div>
-                                    <div class="card-footer">
+                                    {{-- <div class="card-footer">
                                         <div class="stats">
                                             <i class="material-icons">date_range</i> Weekly sales
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -80,11 +80,11 @@ Employees
                                         <p class="category"><strong>Followers</strong></p>
                                         <h3 class="card-title">+245</h3>
                                     </div>
-                                    <div class="card-footer">
+                                    {{-- <div class="card-footer">
                                         <div class="stats">
                                             <i class="material-icons">update</i> Just Updated
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -102,90 +102,24 @@ Employees
                                             <thead class="text-primary">
                                                 <tr><th>ID</th>
                                                 <th>Name</th>
-                                                <th>Salary</th>
                                                 <th>Mobile</th>
                                                 <th>Email</th>
                                                 <th>Department</th>
-                                                <th>Action</th>
+                                                <th>Designation</th>
                                             </tr></thead>
                                             <tbody>
+                                                @foreach ($employees as $employee )
                                                 <tr>
                                                     <td>1</td>
-                                                    <td>Bob Williams</td>
-                                                    <td>$23,566</td>
-                                                    <td>USA</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>Sales</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-info">View</button>
-                                                    </td>
+                                                    <td>{{$employee->emp_name}}</td>
+                                                    <td>{{$employee->emp_mbl}}</td>
+                                                    <td>{{$employee->emp_email}}</td>
+                                                    <td>{{$employee->dept_title}}</td>
+                                                    <td>{{$employee->designation}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Mike Tyson</td>
-                                                    <td>$10,200</td>
-                                                    <td>Canada</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>Sales</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-info">View</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>Tim Sebastian</td>
-                                                    <td>$32,190</td>
-                                                    <td>Netherlands</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>Sales</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-info">View</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Philip Morris</td>
-                                                    <td>$31,123</td>
-                                                    <td>Korea, South</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>Sales</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-info">View</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Minerva Hooper</td>
-                                                    <td>$23,789</td>
-                                                    <td>South Africa</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>Sales</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-info">View</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>6</td>
-                                                    <td>Hulk Hogan</td>
-                                                    <td>$43,120</td>
-                                                    <td>Netherlands</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>Sales</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-info">View</button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>Angelina Jolie </td>
-                                                    <td>$12,140</td>
-                                                    <td>Australia</td>
-                                                    <td>demo@gmail.com</td>
-                                                    <td>Sales</td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-outline-info">View</button>
-                                                    </td>
-                                                </tr>
+                                                @endforeach
+
+
                                             </tbody>
                                         </table>
                                     </div>

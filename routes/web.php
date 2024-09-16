@@ -80,6 +80,8 @@ Route::controller(LeaveRequestController::class)->group(function(){
     //Route::get('/leave-request','index')->name('leave.emp.index');
     Route::get('/leave-request','index_admin')->name('leave.admin.index');
     Route::get('/request/leave','index_emp')->name('leave.emp.index');
+    Route::get('list/request/leave','my_leaves')->name('list.request.leave');
     Route::post('/request/leave','store')->name('leave.store');
     Route::post('/leave-request/{id}/{status}','updateStatus')->name('leave.update.status');
 });
+

@@ -23,6 +23,20 @@ class LeaveRequestController extends Controller
          return view('leaves.employee-view.index',compact('emp_id'));
 
     }
+    public function my_leaves(){
+    $emp_email= DB::table('users')
+     ->select('users.email')
+     ->where('id',auth()->id())
+     ->get();
+     $emp_id= DB::table('employees')
+     ->select('employees.emp_id')
+     ->where('emp_email',$emp_email[0]->email)
+     ->get();
+     $leaveRequests = DB::table('leave_requests')
+     ->where('emp_id',$emp_id[0]->emp_id)
+     ->get();
+     return view('leaves.employee-view.myleaves',compact('leaveRequests'));
+    }
     public function index_admin()
     {
         $leaveRequests = DB::table('leave_requests')
@@ -36,9 +50,9 @@ class LeaveRequestController extends Controller
     {
         $request->validate([
             'emp_id' => 'required',
-            'start_date' => 'required|date|before_or_equal:end_date',
-            'end_date' => 'required|date',
-            'reason' => 'nullable|string',
+            'start_date' => 'required|date|after_or_equal:today|before_or_equal:end_date',
+            'end_date' => 'required|date|after:start_date',
+            'reason' => 'required|string',
         ]);
 
         DB::table('leave_requests')->insert([
