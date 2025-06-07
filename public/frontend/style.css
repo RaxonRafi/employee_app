@@ -1,0 +1,366 @@
+html,body{
+    margin: 0;
+    padding: 0;
+}
+/* .navbar-section{
+    background-color: white !important;
+} */
+.navbar-section .nav-link{
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    color: rgb(17, 17, 17);
+}
+.home-banner {
+    background: url('/frontend/images/header-photo.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.overlay{
+    background:rgba(255, 255, 255, 0.51);
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+}
+.banner-content{
+    position: relative;
+    padding-top: 50px;
+}
+.banner-content span{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 128px;
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.05em;
+
+}
+.banner-content p{
+    font-family: "Inter", sans-serif;
+    padding: 0px;
+    margin: 30px 0px 0px;
+    color: rgb(17, 17, 17);
+    max-width: 448px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+
+}
+.banner-btn-group .banner-btn1{
+    color: rgb(255, 255, 255);
+    background-color: rgb(35, 197, 119);
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    padding: 20px 32px;
+    border: none;
+}
+.banner-btn-group .banner-btn2{
+    border: 2px solid rgb(35, 197, 119);
+    color: rgb(17, 17, 17);
+    background: none;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    padding: 20px 32px;
+
+}
+.about-section{
+    margin-top: 50px;
+    text-align: center;
+}
+.about-section h2{
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+.about-section h1{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.card-title{
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+.card-text{
+    font-weight: 400;
+    color: rgb(119, 119, 119);
+    text-align: center;
+}
+/*
+goals */
+.goals-section{
+    margin: 10rem;
+}
+.goals-section h2{
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+.goals-section h1{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.goals-section p{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+
+}
+/* mission */
+.mission-section {
+    margin: 10rem;
+}
+.mission-section h2{
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+.mission-section h1{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.mission-section p{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+
+}
+
+/* support */
+.support-section{
+    text-align: center;
+    margin: 10rem;
+}
+.support-section h1{
+
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.support-section h2{
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+}
+.support-section p{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+
+}
+/* team */
+.team-section{
+    margin: 10rem;
+}
+.team-section h2{
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+.team-section h1{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.team-section p{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+
+}
+.team-img-section{
+    margin: 10rem;
+    text-align: center;
+}
+.team-img-section .card{
+   border: none;
+}
+.team-img-section .card-img-top{
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 92px;
+    margin-bottom: 8px;
+}
+
+/* testimonial */
+.testimonial-section{
+    text-align: center;
+    margin: 10rem;
+}
+.testimonial-section h1{
+
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.testimonial-section h2{
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+}
+.testimonial-section p{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+    opacity: 0.5;
+
+}
+.testimonial-section h3{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    padding-bottom: 50px;
+
+}
+.carousel-indicators [data-bs-target]{
+    margin-top: 10px;
+    background-color:black
+}
+/* quote-section */
+/* support */
+.quote-section{
+    text-align: center;
+    margin: 10rem;
+}
+.quote-section h1{
+
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.quote-section h2{
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+}
+.quote-section p{
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+
+}
+/* contact */
+.contact-section{
+    margin: 10rem;
+}
+.contact-section h1{
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    text-align: center;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+.contact-section h2{
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: rgb(35, 197, 119);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+}
+.contact-section p{
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.4;
+
+}
+.footer-section{
+    text-align: center;
+    margin: 2rem;
+}
+.footer-section span{
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: rgb(17, 17, 17);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.4;
+    opacity: 0.8;
+}
